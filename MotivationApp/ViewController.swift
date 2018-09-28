@@ -9,12 +9,32 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
+    
+    
 
 }
+
+
+//MARK:- Life Cycle
+extension ViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+    
+}
+
+extension ViewController {
+    
+}
+
+extension ViewController {
+    
+}
+
+extension ViewController {
+    
+}
+
 
