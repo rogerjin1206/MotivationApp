@@ -13,6 +13,7 @@
 		567EBA4A215DED350096174B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 567EBA49215DED350096174B /* Assets.xcassets */; };
 		567EBA4D215DED350096174B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 567EBA4B215DED350096174B /* LaunchScreen.storyboard */; };
 		567EBA55215DFF550096174B /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567EBA54215DFF550096174B /* CustomView.swift */; };
+		56CDBDEC2161FD86001E5C7B /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CDBDEB2161FD86001E5C7B /* Model.swift */; };
 		648A9D6A22B3DFC8C5CC55B1 /* Pods_MotivationApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFF19BE0E3E36B87A684680 /* Pods_MotivationApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		567EBA4C215DED350096174B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		567EBA4E215DED350096174B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		567EBA54215DFF550096174B /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		56CDBDEB2161FD86001E5C7B /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		AF405D3D85DD213221DCFB78 /* Pods-MotivationApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MotivationApp.debug.xcconfig"; path = "Target Support Files/Pods-MotivationApp/Pods-MotivationApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,14 +74,39 @@
 			isa = PBXGroup;
 			children = (
 				567EBA42215DED340096174B /* AppDelegate.swift */,
-				567EBA44215DED340096174B /* MainViewController.swift */,
-				567EBA54215DFF550096174B /* CustomView.swift */,
+				56CDBDEA2161FD59001E5C7B /* Model */,
+				56CDBDE82161FD48001E5C7B /* View */,
+				56CDBDE92161FD4A001E5C7B /* Controller */,
 				567EBA46215DED340096174B /* Main.storyboard */,
 				567EBA49215DED350096174B /* Assets.xcassets */,
 				567EBA4B215DED350096174B /* LaunchScreen.storyboard */,
 				567EBA4E215DED350096174B /* Info.plist */,
 			);
 			path = MotivationApp;
+			sourceTree = "<group>";
+		};
+		56CDBDE82161FD48001E5C7B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				567EBA54215DFF550096174B /* CustomView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		56CDBDE92161FD4A001E5C7B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				567EBA44215DED340096174B /* MainViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		56CDBDEA2161FD59001E5C7B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				56CDBDEB2161FD86001E5C7B /* Model.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		A40FE643F06D6569AD841889 /* Pods */ = {
@@ -214,6 +241,7 @@
 				567EBA55215DFF550096174B /* CustomView.swift in Sources */,
 				567EBA45215DED340096174B /* MainViewController.swift in Sources */,
 				567EBA43215DED340096174B /* AppDelegate.swift in Sources */,
+				56CDBDEC2161FD86001E5C7B /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

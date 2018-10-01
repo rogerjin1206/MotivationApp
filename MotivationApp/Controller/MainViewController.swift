@@ -11,30 +11,41 @@ import SnapKit
 import AVFoundation
 
 
+enum Status {
+    
+    case Stop
+    case Record
+    case Play
+    
+}
+
+
 class MainViewController: UIViewController {
     
-    var time = 0
     
+    
+    
+    // UI
     let timerLabel : UILabel = {
         
         let t = UILabel()
-        t.text = "0"
+        t.text = "00:00:01"
         t.textColor = .black
         t.textAlignment = .center
         t.font = UIFont.preferredFont(forTextStyle: .headline)
         
         return t
     }()
+    
     let customView = CustomView()
     
+    
+    // Data
+    var audioSession : AVAudioSession?
     var audioRecorder : AVAudioRecorder?
     var audioPlayer : AVAudioPlayer?
+    var status = Status.Stop
     
-    
-    var fileName = "audioFile.m4a"
-    
-    
-
 }
 
 
@@ -44,6 +55,8 @@ extension MainViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.audioSession = AVAudioSession.sharedInstance()
+        
         view.backgroundColor = .white
         
         [
@@ -52,8 +65,13 @@ extension MainViewController {
             
         ].forEach{view.addSubview($0)}
         
-        customView.recoderButton.addTarget(self, action: #selector(tappedRecordButton(sender:)), for: .touchUpInside)
-        customView.playerButton.addTarget(self, action: #selector(tappedPlayButton(sender:)), for: .touchUpInside)
+        setupRecoringSession()
+        setupRecoder()
+        setupActions()
+        
+        
+        
+        
         
     }
     
@@ -83,28 +101,62 @@ extension MainViewController {
     
 }
 
+
+//MARK:- AVAudioRecorderDelegate & AVAudioPlayerDelegate
 extension MainViewController : AVAudioRecorderDelegate,AVAudioPlayerDelegate {
+    
+    fileprivate func setupRecoringSession() {
+        
+        self.audioSession = AVAudioSession.sharedInstance()
+        
+        do {
+            
+            try audioSession?.setCategory(AVAudioSession.Category.playAndRecord, mode: AVAudioSession.Mode.default, options: AVAudioSession.CategoryOptions.defaultToSpeaker)
+            
+            audioSession?.requestRecordPermission({[unowned self] (allowed) in
+                
+            })
+            
+        } catch {
+            
+        }
+    
+    }
+
     
     fileprivate func getDocumentsDirector() -> URL {
         
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
+        let documentDirectory = paths[0]
+        
+        return documentDirectory
+        
+    }
+    
+    
+    fileprivate func getFileUrl() -> URL {
+        
+        let fileName = "showme.m4a"
+        let filePath = getDocumentsDirector().appendingPathComponent(fileName)
+        
+        return filePath
+    
         
     }
     
     fileprivate func setupRecoder() {
         
-        let audioFileName = getDocumentsDirector().appendingPathComponent(fileName)
+        let audioFileName = getFileUrl()
         let recordSetting = [ AVFormatIDKey : kAudioFormatAppleLossless,
                               AVEncoderAudioQualityKey : AVAudioQuality.max.rawValue,
-                              AVEncoderBitRateKey : 320000,
+                              AVEncoderBitRateKey : 1500,
                               AVNumberOfChannelsKey : 2,
-                              AVSampleRateKey : 44100.2 ] as [String:Any]
+                              AVSampleRateKey : 12000 ] as [String : Any]
         
         
         do {
-            
-            self.audioRecorder = try AVAudioRecorder(url: audioFileName, settings: recordSetting )
+
+            self.audioRecorder = try AVAudioRecorder(url: audioFileName, settings: recordSetting)
             self.audioRecorder?.delegate = self
             self.audioRecorder?.prepareToRecord()
             
@@ -120,9 +172,10 @@ extension MainViewController : AVAudioRecorderDelegate,AVAudioPlayerDelegate {
     
     fileprivate func setupPlayer() {
         
-        let audioFileName = getDocumentsDirector().appendingPathComponent(fileName)
+        let audioFileName = getFileUrl()
         
         do {
+            
             self.audioPlayer = try AVAudioPlayer(contentsOf: audioFileName)
             self.audioPlayer?.delegate = self
             self.audioPlayer?.prepareToPlay()
@@ -136,9 +189,12 @@ extension MainViewController : AVAudioRecorderDelegate,AVAudioPlayerDelegate {
     
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         
+        
+        print("flag :",flag)
         customView.playerButton.isEnabled = true
         
     }
+    
     
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
@@ -151,33 +207,63 @@ extension MainViewController : AVAudioRecorderDelegate,AVAudioPlayerDelegate {
     
 }
 
+
+//MARK:- Actions
 extension MainViewController {
     
+    fileprivate func setupActions() {
+        
+        customView.recoderButton.addTarget(self, action: #selector(tappedRecordButton(sender:)), for: .touchUpInside)
+        customView.playerButton.addTarget(self, action: #selector(tappedPlayButton(sender:)), for: .touchUpInside)
+    
+    }
     
     @objc fileprivate func tappedRecordButton(sender:UIButton) {
         
-        let timer : Timer?
+        switch status {
+            
+        case .Stop:
+            
+            self.audioRecorder?.record()
+            self.customView.playerButton.isEnabled = false
+            self.customView.recoderButton.setTitle("정지", for: .normal)
+            self.status = .Record
+            
+            break
+            
+        case .Record:
+            
+            self.audioRecorder?.stop()
+            self.customView.playerButton.isEnabled = true
+            self.customView.recoderButton.setTitle("녹음", for: .normal)
+            self.status = .Stop
+            
+            let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+            
+            print(paths)
+            
+            break
+            
+        case .Play:
+            
+            break
+    
+        }
         
-        timer = Timer.scheduledTimer(timeInterval:1, target: self, selector: #selector(timerRunning), userInfo: nil, repeats: true)
-        
+    
     }
     
     
     
     @objc fileprivate func tappedPlayButton(sender:UIButton) {
         
+        setupPlayer()
+        self.audioPlayer?.play()
+        
         
     }
     
-    
-    @objc fileprivate func timerRunning() {
-        
-        time += 1
-        self.timerLabel.text = "\(time)"
-        
-    }
-    
-    
+
     
 }
 

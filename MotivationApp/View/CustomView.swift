@@ -11,18 +11,7 @@ import UIKit
 import SnapKit
 import AVFoundation
 
-
-enum RecordStatus {
-    
-    case Stop
-    case Recoding
-    
-}
-
-
 class CustomView : UIView {
-    
-    var status = RecordStatus.Stop
     
     let playerButton : UIButton = {
         
@@ -88,13 +77,6 @@ extension CustomView {
     }
     
 
-}
-
-
-
-extension CustomView {
-
-        
 }
 
 
