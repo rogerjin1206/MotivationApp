@@ -22,9 +22,6 @@ enum Status {
 
 class MainViewController: UIViewController {
     
-    
-    
-    
     // UI
     let timerLabel : UILabel = {
         
@@ -55,7 +52,7 @@ extension MainViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.audioSession = AVAudioSession.sharedInstance()
+        
         
         view.backgroundColor = .white
         
@@ -113,9 +110,9 @@ extension MainViewController : AVAudioRecorderDelegate,AVAudioPlayerDelegate {
             
             try audioSession?.setCategory(AVAudioSession.Category.playAndRecord, mode: AVAudioSession.Mode.default, options: AVAudioSession.CategoryOptions.defaultToSpeaker)
             
-            audioSession?.requestRecordPermission({[unowned self] (allowed) in
-                
-            })
+//            audioSession?.requestRecordPermission({[unowned self] (allowed) in
+//
+//            })
             
         } catch {
             
@@ -180,6 +177,8 @@ extension MainViewController : AVAudioRecorderDelegate,AVAudioPlayerDelegate {
             self.audioPlayer?.delegate = self
             self.audioPlayer?.prepareToPlay()
             self.audioPlayer?.volume = 1.0
+            let duration = self.audioPlayer?.duration
+            print(duration!)
         } catch  {
             print(error)
         }
@@ -239,8 +238,6 @@ extension MainViewController {
             self.status = .Stop
             
             let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-            
-            print(paths)
             
             break
             

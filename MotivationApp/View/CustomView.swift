@@ -37,7 +37,7 @@ class CustomView : UIView {
         super.init(frame: frame)
         
         setupViews()
-        backgroundColor = .blue
+        
         
         
     }

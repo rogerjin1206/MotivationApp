@@ -24,7 +24,8 @@ extension AppDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         
-        window?.rootViewController = UINavigationController(rootViewController: MainViewController())
+//        window?.rootViewController = UINavigationController(rootViewController: AlarmViewController())
+        window?.rootViewController = AlarmViewController()
         
         return true
     }

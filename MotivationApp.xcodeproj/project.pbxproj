@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5630348C216B43BF00C4EAA4 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5630348B216B43BF00C4EAA4 /* UIColor.swift */; };
+		5630348E216B510C00C4EAA4 /* SelectBackgroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5630348D216B510C00C4EAA4 /* SelectBackgroundViewController.swift */; };
+		56303490216B51EC00C4EAA4 /* backgroundImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5630348F216B51EC00C4EAA4 /* backgroundImageCell.swift */; };
+		56303492216B523A00C4EAA4 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56303491216B523A00C4EAA4 /* UICollectionView.swift */; };
+		56303494216B536C00C4EAA4 /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56303493216B536C00C4EAA4 /* ConfigurationViewController.swift */; };
+		56303496216B54C100C4EAA4 /* ConfigurationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56303495216B54C100C4EAA4 /* ConfigurationCell.swift */; };
 		567EBA43215DED340096174B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567EBA42215DED340096174B /* AppDelegate.swift */; };
 		567EBA45215DED340096174B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567EBA44215DED340096174B /* MainViewController.swift */; };
 		567EBA48215DED340096174B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 567EBA46215DED340096174B /* Main.storyboard */; };
@@ -14,12 +20,23 @@
 		567EBA4D215DED350096174B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 567EBA4B215DED350096174B /* LaunchScreen.storyboard */; };
 		567EBA55215DFF550096174B /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567EBA54215DFF550096174B /* CustomView.swift */; };
 		56CDBDEC2161FD86001E5C7B /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CDBDEB2161FD86001E5C7B /* Model.swift */; };
+		56CDBDEE216205D9001E5C7B /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CDBDED216205D9001E5C7B /* AlarmViewController.swift */; };
+		56CDBDF121620801001E5C7B /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CDBDF021620801001E5C7B /* UITableView.swift */; };
+		56CDBDF321620848001E5C7B /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CDBDF221620848001E5C7B /* Common.swift */; };
+		56CDBDF5216208DE001E5C7B /* AlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CDBDF4216208DE001E5C7B /* AlarmCell.swift */; };
+		56CDBDF7216217C8001E5C7B /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CDBDF6216217C8001E5C7B /* AlarmView.swift */; };
 		648A9D6A22B3DFC8C5CC55B1 /* Pods_MotivationApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFF19BE0E3E36B87A684680 /* Pods_MotivationApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2746147F7C7C8ED23D4E2F74 /* Pods-MotivationApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MotivationApp.release.xcconfig"; path = "Target Support Files/Pods-MotivationApp/Pods-MotivationApp.release.xcconfig"; sourceTree = "<group>"; };
 		3BFF19BE0E3E36B87A684680 /* Pods_MotivationApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MotivationApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5630348B216B43BF00C4EAA4 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		5630348D216B510C00C4EAA4 /* SelectBackgroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBackgroundViewController.swift; sourceTree = "<group>"; };
+		5630348F216B51EC00C4EAA4 /* backgroundImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = backgroundImageCell.swift; sourceTree = "<group>"; };
+		56303491216B523A00C4EAA4 /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
+		56303493216B536C00C4EAA4 /* ConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
+		56303495216B54C100C4EAA4 /* ConfigurationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationCell.swift; sourceTree = "<group>"; };
 		567EBA3F215DED340096174B /* MotivationApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MotivationApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		567EBA42215DED340096174B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		567EBA44215DED340096174B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -29,6 +46,11 @@
 		567EBA4E215DED350096174B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		567EBA54215DFF550096174B /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		56CDBDEB2161FD86001E5C7B /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		56CDBDED216205D9001E5C7B /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
+		56CDBDF021620801001E5C7B /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		56CDBDF221620848001E5C7B /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		56CDBDF4216208DE001E5C7B /* AlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCell.swift; sourceTree = "<group>"; };
+		56CDBDF6216217C8001E5C7B /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
 		AF405D3D85DD213221DCFB78 /* Pods-MotivationApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MotivationApp.debug.xcconfig"; path = "Target Support Files/Pods-MotivationApp/Pods-MotivationApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -50,6 +72,16 @@
 				3BFF19BE0E3E36B87A684680 /* Pods_MotivationApp.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		56303497216B55F300C4EAA4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				56CDBDF4216208DE001E5C7B /* AlarmCell.swift */,
+				56303495216B54C100C4EAA4 /* ConfigurationCell.swift */,
+				5630348F216B51EC00C4EAA4 /* backgroundImageCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		567EBA36215DED340096174B = {
@@ -77,6 +109,7 @@
 				56CDBDEA2161FD59001E5C7B /* Model */,
 				56CDBDE82161FD48001E5C7B /* View */,
 				56CDBDE92161FD4A001E5C7B /* Controller */,
+				56CDBDEF216207F1001E5C7B /* Extension */,
 				567EBA46215DED340096174B /* Main.storyboard */,
 				567EBA49215DED350096174B /* Assets.xcassets */,
 				567EBA4B215DED350096174B /* LaunchScreen.storyboard */,
@@ -88,7 +121,9 @@
 		56CDBDE82161FD48001E5C7B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				56303497216B55F300C4EAA4 /* Cell */,
 				567EBA54215DFF550096174B /* CustomView.swift */,
+				56CDBDF6216217C8001E5C7B /* AlarmView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -97,6 +132,9 @@
 			isa = PBXGroup;
 			children = (
 				567EBA44215DED340096174B /* MainViewController.swift */,
+				56CDBDED216205D9001E5C7B /* AlarmViewController.swift */,
+				56303493216B536C00C4EAA4 /* ConfigurationViewController.swift */,
+				5630348D216B510C00C4EAA4 /* SelectBackgroundViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -107,6 +145,17 @@
 				56CDBDEB2161FD86001E5C7B /* Model.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		56CDBDEF216207F1001E5C7B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				56CDBDF221620848001E5C7B /* Common.swift */,
+				56CDBDF021620801001E5C7B /* UITableView.swift */,
+				56303491216B523A00C4EAA4 /* UICollectionView.swift */,
+				5630348B216B43BF00C4EAA4 /* UIColor.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		A40FE643F06D6569AD841889 /* Pods */ = {
@@ -238,10 +287,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				56CDBDEE216205D9001E5C7B /* AlarmViewController.swift in Sources */,
+				56303496216B54C100C4EAA4 /* ConfigurationCell.swift in Sources */,
 				567EBA55215DFF550096174B /* CustomView.swift in Sources */,
 				567EBA45215DED340096174B /* MainViewController.swift in Sources */,
+				56303490216B51EC00C4EAA4 /* backgroundImageCell.swift in Sources */,
 				567EBA43215DED340096174B /* AppDelegate.swift in Sources */,
 				56CDBDEC2161FD86001E5C7B /* Model.swift in Sources */,
+				56303492216B523A00C4EAA4 /* UICollectionView.swift in Sources */,
+				56CDBDF121620801001E5C7B /* UITableView.swift in Sources */,
+				5630348E216B510C00C4EAA4 /* SelectBackgroundViewController.swift in Sources */,
+				56CDBDF321620848001E5C7B /* Common.swift in Sources */,
+				56CDBDF7216217C8001E5C7B /* AlarmView.swift in Sources */,
+				56303494216B536C00C4EAA4 /* ConfigurationViewController.swift in Sources */,
+				56CDBDF5216208DE001E5C7B /* AlarmCell.swift in Sources */,
+				5630348C216B43BF00C4EAA4 /* UIColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
