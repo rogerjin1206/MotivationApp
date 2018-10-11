@@ -237,7 +237,7 @@ extension MainViewController {
             self.customView.recoderButton.setTitle("녹음", for: .normal)
             self.status = .Stop
             
-            let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+//            let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
             
             break
             

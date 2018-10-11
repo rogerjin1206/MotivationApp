@@ -22,7 +22,7 @@ class ConfigurationViewController : UIViewController {
         
     }()
     
-    let dismissButton : UIButton = {
+    let backButton : UIButton = {
         
         let b = UIButton()
         b.addTarget(self, action: #selector(backToAlarmVC), for: .touchUpInside)
@@ -76,31 +76,31 @@ extension ConfigurationViewController {
         view.addSubview(blurEffectView)
         
         [
-            dismissButton,
+            backButton,
             naviLabel,
             tableView
         ].forEach({view.addSubview($0)})
         
         
-        dismissButton.snp.makeConstraints({
+        backButton.snp.makeConstraints({
             
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(24)
             $0.leading.equalToSuperview().offset(24)
-            $0.size.equalTo(50)
+            $0.size.equalTo(40)
             
             
         })
         
         naviLabel.snp.makeConstraints({
             
-            $0.centerY.equalTo(dismissButton.snp.centerY)
+            $0.centerY.equalTo(backButton.snp.centerY)
             $0.centerX.equalToSuperview()
         })
         
         
         tableView.snp.makeConstraints({
             
-            $0.top.equalTo(dismissButton.snp.bottom)
+            $0.top.equalTo(backButton.snp.bottom)
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()
@@ -129,6 +129,22 @@ extension ConfigurationViewController : UITableViewDelegate , UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        switch indexPath.row {
+        case 0:
+            
+            let selectBackgroundVC = SelectBackgroundViewController()
+            selectBackgroundVC.modalPresentationStyle = .overCurrentContext
+            self.present(selectBackgroundVC, animated: true, completion: nil)
+            
+        case 1:
+            
+            ()
+            
+        default:
+            
+            ()
+        }
         
     }
     

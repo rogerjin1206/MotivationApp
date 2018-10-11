@@ -27,3 +27,24 @@ public extension ClassNameProtocol {
 }
 
 extension NSObject: ClassNameProtocol {}
+
+
+extension Int {
+    
+    var doubleFigures : String {
+        
+        print(self)
+        return "1234"
+        
+//        if self > 10 {
+        
+//            return "0\(self.doubleFigures)"
+        
+//        } else {
+        
+//            return self.doubleFigures
+        
+//        }
+    }
+    
+}

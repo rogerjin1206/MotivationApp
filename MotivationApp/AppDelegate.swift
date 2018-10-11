@@ -25,7 +25,7 @@ extension AppDelegate {
         
         
 //        window?.rootViewController = UINavigationController(rootViewController: AlarmViewController())
-        window?.rootViewController = AlarmViewController()
+        window?.rootViewController = SettingAlarmViewController()
         
         return true
     }

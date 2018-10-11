@@ -11,10 +11,34 @@ import UIKit
 import SnapKit
 
 class AlarmViewController : UIViewController {
+            
+    let backgroundImageView : UIImageView = {
+        
+        let iv = UIImageView()
+        iv.image = UIImage(named: "background_1")
+        
+        return iv
+        
+    }()
     
+    let menuButton : UIButton = {
+        
+        let b = UIButton()
+        b.addTarget(self, action: #selector(goToConfigurationVC), for: .touchUpInside)
+        b.backgroundColor = .yellow
+        
+        return b
+        
+    }()
     
-    let rightButton = UIButton()
-    let leftButton = UIButton()
+    let createAlarmButton : UIButton = {
+        
+        let b = UIButton()
+        b.addTarget(self, action: #selector(goToSettingAlarmVC), for: .touchUpInside)
+        b.backgroundColor = .yellow
+        return b
+        
+    }()
     
     lazy var tableView : UITableView = {
         
@@ -39,7 +63,10 @@ extension AlarmViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        
+        
+        
+        
         
         setupViews()
         
@@ -54,27 +81,30 @@ extension AlarmViewController {
     
     fileprivate func setupViews() {
         
-        leftButton.backgroundColor = .yellow
-        rightButton.backgroundColor = .yellow
-        
-        leftButton.addTarget(self, action: #selector(goToConfigurationVC), for: .touchUpInside)
-//        rightButton
+
         
         [
-            
-            leftButton,
-            rightButton,
+            backgroundImageView,
+            menuButton,
+            createAlarmButton,
             tableView
             
             ].forEach{view.addSubview($0)}
         
-        leftButton.snp.makeConstraints {
+        
+        backgroundImageView.snp.makeConstraints({
+            
+            $0.edges.equalToSuperview()
+            
+        })
+        
+        menuButton.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(24)
             $0.leading.equalToSuperview().offset(24)
             $0.size.equalTo(40)
         }
         
-        rightButton.snp.makeConstraints {
+        createAlarmButton.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(24)
             $0.trailing.equalToSuperview().offset(-24)
             $0.size.equalTo(40)
@@ -83,7 +113,7 @@ extension AlarmViewController {
         
         tableView.snp.makeConstraints {
             
-            $0.height.equalTo(view.frame.height/2)
+            $0.height.equalTo(view.frame.height/2+18)
             $0.trailing.equalToSuperview()
             $0.leading.equalToSuperview()
             $0.bottom.equalToSuperview()
@@ -116,7 +146,7 @@ extension AlarmViewController : UITableViewDelegate , UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 125
+        return 107
         
     }
     
@@ -127,7 +157,13 @@ extension AlarmViewController : UITableViewDelegate , UITableViewDataSource {
 //MARK:- Actions
 extension AlarmViewController {
     
-    @objc fileprivate func goToSelectBackgroundVC() {
+    @objc fileprivate func goToSettingAlarmVC() {
+        
+        let settingAlarmVC = SettingAlarmViewController()
+        
+        settingAlarmVC.modalPresentationStyle = .overCurrentContext
+        
+        self.present(settingAlarmVC, animated: true, completion: nil)
         
 
         

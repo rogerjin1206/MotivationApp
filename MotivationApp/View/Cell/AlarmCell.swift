@@ -13,30 +13,7 @@ class AlarmCell : BasicTableViewCell  {
     
     
     let alarmView = AlarmView()
-    
-    
-    
-    
-    
-//    let morningOrAfternoonLabel : UILabel = {
-//
-//        let l = UILabel()
-//        l.text = "오전"
-//
-//        return l
-//
-//    }()
-//    let timeLabel : UILabel = {
-//
-//        let l = UILabel()
-//        l.text = "asdasd"
-//
-//        return l
-//
-//
-//    }()
-    
-//    let alarmSwitch = UISwitch()
+
     
     
     override func initial() {
@@ -51,7 +28,7 @@ class AlarmCell : BasicTableViewCell  {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let frame = self.contentView.frame.inset(by:UIEdgeInsets(top: 24, left: 24, bottom: 0, right: 24))
+        let frame = self.contentView.frame.inset(by:UIEdgeInsets(top: 10, left: 24, bottom: 0, right: 24))
         self.contentView.frame = frame
         self.contentView.backgroundColor = .clear
         self.contentView.layer.cornerRadius = 25
