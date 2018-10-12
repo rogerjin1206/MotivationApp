@@ -16,7 +16,10 @@ class SettingTimeView : UIView {
         let b = UIButton()
         b.isUserInteractionEnabled = false
         b.setTitle(("7시간 30분 후에 울림"), for: .normal)
-        b.backgroundColor = UIColor(red: 74, green: 74, blue: 74)
+        b.setTitleColor(.white, for: .normal)
+        b.titleLabel?.font = UIFont(name:"AppleSDGothicNeo-SemiBold", size: 14)
+        b.backgroundColor = UIColor(red: 74, green: 74, blue: 74).withAlphaComponent(0.4)
+        b.layer.cornerRadius = 8
 //        b.imageView?.image = UIImage(named: <#T##String#>)
 //        b.contentEdgeInsets = UIEdgeInsets(top: <#T##CGFloat#>, left: <#T##CGFloat#>, bottom: <#T##CGFloat#>, right: <#T##CGFloat#>)
         
@@ -34,6 +37,7 @@ class SettingTimeView : UIView {
         pv.dataSource = self
         pv.backgroundColor = .black
         
+        
         return pv
         
     }()
@@ -41,8 +45,13 @@ class SettingTimeView : UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .clear
-        alpha = 0.7
+        
+        
+        layer.cornerRadius = 8
+        backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        
+        
+        
         setupViews()
         
     }
@@ -68,18 +77,17 @@ extension SettingTimeView {
             
             $0.top.equalToSuperview().offset(8)
             $0.leading.equalToSuperview().offset(8)
-            $0.trailing.equalToSuperview().offset(8)
+            $0.trailing.equalToSuperview().offset(-8)
             $0.height.equalTo(32)
             
         })
         
         timePickerView.snp.makeConstraints({
             
-            $0.top.equalTo(afterTimeButton.snp.bottom)
+            $0.top.equalTo(afterTimeButton.snp.bottom).offset(8)
             $0.leading.equalToSuperview()
             $0.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview()
-            
+            $0.bottom.equalToSuperview().offset(-16)
         })
         
     }
@@ -109,60 +117,72 @@ extension SettingTimeView : UIPickerViewDelegate,UIPickerViewDataSource {
         
         switch component {
         case 0:
+            
             return 11
+            
         case 1:
+            
             return 60
+            
         case 2:
+            
             return 2
+            
         default:
+            
             return 0
             
         }
         
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        
+        var str = ""
         
         switch component {
             
         case 0:
             
-            return String(row+1)
+            str = String(row+1)
+            let attributedString = NSAttributedString(string:str , attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+            return attributedString
             
         case 1:
             
             if row < 10 {
                 
-                return "0\(row)"
+                str = "0\(row)"
+                let attributedString = NSAttributedString(string:str , attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+                return attributedString
                 
             } else {
-                
-                return String(row)
+                str = String(row)
+                let attributedString = NSAttributedString(string:str , attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+                return attributedString
                 
             }
-
+            
         case 2:
             
             if row == 0 {
-                
-                return "오전"
+                str = "AM"
+                let attributedString = NSAttributedString(string:str , attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+                return attributedString
                 
             } else {
-                
-                return "오후"
+                str = "PM"
+                let attributedString = NSAttributedString(string:str , attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+                return attributedString
                 
             }
             
-        default: return ""
-            
+        default:
+            let attributedString = NSAttributedString(string:str , attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+            return attributedString
         }
-      
+
     }
-    
-//    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-//
-//        return NSAttributedString(string: , attributes: <#T##[NSAttributedString.Key : Any]?#>)
-//
-//    }
   
 }

@@ -13,6 +13,11 @@
 		56303492216B523A00C4EAA4 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56303491216B523A00C4EAA4 /* UICollectionView.swift */; };
 		56303494216B536C00C4EAA4 /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56303493216B536C00C4EAA4 /* ConfigurationViewController.swift */; };
 		56303496216B54C100C4EAA4 /* ConfigurationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56303495216B54C100C4EAA4 /* ConfigurationCell.swift */; };
+		56702179216EFDFB00E8B889 /* SettingDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56702178216EFDFB00E8B889 /* SettingDayView.swift */; };
+		5670217F216F3E6500E8B889 /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5670217E216F3E6500E8B889 /* DayView.swift */; };
+		56702181216F51A500E8B889 /* SettingSoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56702180216F51A500E8B889 /* SettingSoundView.swift */; };
+		56702183216F568900E8B889 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56702182216F568900E8B889 /* CustomSlider.swift */; };
+		567B0F0921704DE400EDEEC8 /* SettingMemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567B0F0821704DE400EDEEC8 /* SettingMemoView.swift */; };
 		567EBA43215DED340096174B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567EBA42215DED340096174B /* AppDelegate.swift */; };
 		567EBA45215DED340096174B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567EBA44215DED340096174B /* MainViewController.swift */; };
 		567EBA48215DED340096174B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 567EBA46215DED340096174B /* Main.storyboard */; };
@@ -39,6 +44,11 @@
 		56303491216B523A00C4EAA4 /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
 		56303493216B536C00C4EAA4 /* ConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
 		56303495216B54C100C4EAA4 /* ConfigurationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationCell.swift; sourceTree = "<group>"; };
+		56702178216EFDFB00E8B889 /* SettingDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDayView.swift; sourceTree = "<group>"; };
+		5670217E216F3E6500E8B889 /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
+		56702180216F51A500E8B889 /* SettingSoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSoundView.swift; sourceTree = "<group>"; };
+		56702182216F568900E8B889 /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
+		567B0F0821704DE400EDEEC8 /* SettingMemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMemoView.swift; sourceTree = "<group>"; };
 		567EBA3F215DED340096174B /* MotivationApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MotivationApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		567EBA42215DED340096174B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		567EBA44215DED340096174B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -127,8 +137,13 @@
 			children = (
 				56303497216B55F300C4EAA4 /* Cell */,
 				567EBA54215DFF550096174B /* CustomView.swift */,
+				56702182216F568900E8B889 /* CustomSlider.swift */,
 				56CDBDF6216217C8001E5C7B /* AlarmView.swift */,
+				5670217E216F3E6500E8B889 /* DayView.swift */,
 				56F06C4E216DF867008CAEAB /* SettingTimeView.swift */,
+				56702178216EFDFB00E8B889 /* SettingDayView.swift */,
+				56702180216F51A500E8B889 /* SettingSoundView.swift */,
+				567B0F0821704DE400EDEEC8 /* SettingMemoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -294,6 +309,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				56CDBDEE216205D9001E5C7B /* AlarmViewController.swift in Sources */,
+				56702183216F568900E8B889 /* CustomSlider.swift in Sources */,
 				56303496216B54C100C4EAA4 /* ConfigurationCell.swift in Sources */,
 				56F06C4F216DF867008CAEAB /* SettingTimeView.swift in Sources */,
 				567EBA55215DFF550096174B /* CustomView.swift in Sources */,
@@ -303,13 +319,17 @@
 				56CDBDEC2161FD86001E5C7B /* Model.swift in Sources */,
 				56303492216B523A00C4EAA4 /* UICollectionView.swift in Sources */,
 				56CDBDF121620801001E5C7B /* UITableView.swift in Sources */,
+				567B0F0921704DE400EDEEC8 /* SettingMemoView.swift in Sources */,
 				5630348E216B510C00C4EAA4 /* SelectBackgroundViewController.swift in Sources */,
 				56F06C4D216DD70F008CAEAB /* SettingAlarmViewController.swift in Sources */,
+				56702181216F51A500E8B889 /* SettingSoundView.swift in Sources */,
 				56CDBDF321620848001E5C7B /* Common.swift in Sources */,
 				56CDBDF7216217C8001E5C7B /* AlarmView.swift in Sources */,
 				56303494216B536C00C4EAA4 /* ConfigurationViewController.swift in Sources */,
 				56CDBDF5216208DE001E5C7B /* AlarmCell.swift in Sources */,
+				56702179216EFDFB00E8B889 /* SettingDayView.swift in Sources */,
 				5630348C216B43BF00C4EAA4 /* UIColor.swift in Sources */,
+				5670217F216F3E6500E8B889 /* DayView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,6 +12,8 @@ import UIKit
 
 public extension UIColor {
     
+    static let pointColor = UIColor(red: 34, green: 220, blue: 223)
+    
     public convenience init(red: Int, green: Int, blue: Int, a: CGFloat = 1.0) {
         self.init(
             red: CGFloat(red) / 255.0,

@@ -15,6 +15,9 @@ class SettingAlarmViewController : UIViewController {
     
     
     let settingTimeView = SettingTimeView()
+    let settingDayView = SettingDayView()
+    let settingSoundView = SettingSoundView()
+    let settingMemoView = SettingMemoView()
     
     
     
@@ -26,10 +29,11 @@ class SettingAlarmViewController : UIViewController {
         b.titleLabel?.textAlignment = .center
         b.titleLabel?.font = UIFont(name:"AppleSDGothicNeo-Bold", size: 17)
         b.addTarget(self, action: #selector(backToAlarmVC), for: .touchUpInside)
-        b.backgroundColor = .red
         
         return b
+        
     }()
+    
     
     let saveButton : UIButton = {
         
@@ -39,9 +43,9 @@ class SettingAlarmViewController : UIViewController {
         b.titleLabel?.textAlignment = .center
         b.titleLabel?.font = UIFont(name:"AppleSDGothicNeo-Bold", size: 17)
         b.addTarget(self, action: #selector(saveAlarmSetting), for: .touchUpInside)
-        b.backgroundColor = .red
         
         return b
+        
     }()
     
     
@@ -54,7 +58,25 @@ extension SettingAlarmViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.backgroundColor = .clear
+        
         setupViews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIWindow.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIWindow.keyboardWillHideNotification, object: nil)
+        
+    }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        
+        NotificationCenter.default.removeObserver(self, name: UIWindow.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIWindow.keyboardWillHideNotification, object: nil)
     }
     
     
@@ -66,6 +88,8 @@ extension SettingAlarmViewController {
     
     fileprivate func setupViews() {
         
+        print(view.frame.origin.y)
+        
         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         
@@ -75,6 +99,9 @@ extension SettingAlarmViewController {
         
         [
             settingTimeView,
+            settingDayView,
+            settingSoundView,
+            settingMemoView,
             cancelButton,
             saveButton
             
@@ -85,15 +112,44 @@ extension SettingAlarmViewController {
         settingTimeView.snp.makeConstraints{
             
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(24)
-            $0.leading.equalToSuperview()
-            $0.trailing.equalToSuperview()
-            $0.height.equalTo(100)
+            $0.leading.equalToSuperview().offset(16)
+            $0.trailing.equalToSuperview().offset(-16)
+            $0.height.equalTo(160)
+        }
+        
+        
+        settingDayView.snp.makeConstraints{
+            
+            $0.top.equalTo(settingTimeView.snp.bottom).offset(8)
+            $0.leading.equalTo(settingTimeView.snp.leading)
+            $0.trailing.equalTo(settingTimeView.snp.trailing)
+            $0.height.equalTo(110)
+            
+        }
+        
+        settingSoundView.snp.makeConstraints{
+            
+            $0.top.equalTo(settingDayView.snp.bottom).offset(8)
+            $0.leading.equalTo(settingTimeView.snp.leading)
+            $0.trailing.equalTo(settingTimeView.snp.trailing)
+            $0.height.equalTo(110)
+
+        }
+        
+        
+        settingMemoView.snp.makeConstraints{
+            
+            $0.top.equalTo(settingSoundView.snp.bottom).offset(8)
+            $0.leading.equalTo(settingTimeView.snp.leading)
+            $0.trailing.equalTo(settingTimeView.snp.trailing)
+            $0.height.equalTo(56)
+            
         }
         
         cancelButton.snp.makeConstraints{
             
             $0.leading.equalToSuperview()
-            $0.bottom.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
             $0.width.equalTo(view.frame.width/2)
             $0.height.equalTo(56)
             
@@ -102,7 +158,7 @@ extension SettingAlarmViewController {
         saveButton.snp.makeConstraints{
             
             $0.trailing.equalToSuperview()
-            $0.bottom.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
             $0.width.equalTo(view.frame.width/2)
             $0.height.equalTo(56)
             
@@ -117,6 +173,10 @@ extension SettingAlarmViewController {
 //MARK:- Actions
 extension SettingAlarmViewController {
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
     @objc fileprivate func backToAlarmVC() {
         
         dismiss(animated: true, completion: nil)
@@ -126,6 +186,45 @@ extension SettingAlarmViewController {
     @objc fileprivate func saveAlarmSetting() {
         
         dismiss(animated: true, completion: nil)
+        
+    }
+    
+    @objc fileprivate func keyboardWillShow(_ notification :Notification) {
+        
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+//            let keyboardRectangle = keyboardFrame.cgRectValue
+//            let keyboardHeight = keyboardRectangle.height
+            
+            DispatchQueue.main.async {
+                
+                UIView.animate(withDuration: 0.15, animations: {
+                    
+                    self.view.frame.origin.y -= 56
+                })
+                
+            }
+            
+            
+        }
+        
+    }
+    
+    @objc fileprivate func keyboardWillHide(_ notification :Notification) {
+        
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+//            let keyboardRectangle = keyboardFrame.cgRectValue
+//            let keyboardHeight = keyboardRectangle.height
+            
+            DispatchQueue.main.async {
+                
+                UIView.animate(withDuration: 0.15, animations: {
+                    
+                    self.view.frame.origin.y = 0
+                })
+                
+            }
+            
+        }
         
     }
     
