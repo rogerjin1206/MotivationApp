@@ -24,6 +24,7 @@
 		567EBA4A215DED350096174B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 567EBA49215DED350096174B /* Assets.xcassets */; };
 		567EBA4D215DED350096174B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 567EBA4B215DED350096174B /* LaunchScreen.storyboard */; };
 		567EBA55215DFF550096174B /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567EBA54215DFF550096174B /* CustomView.swift */; };
+		56ACEE72217D73260073B272 /* first.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56ACEE71217D73260073B272 /* first.mp3 */; };
 		56CDBDEC2161FD86001E5C7B /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CDBDEB2161FD86001E5C7B /* Model.swift */; };
 		56CDBDEE216205D9001E5C7B /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CDBDED216205D9001E5C7B /* AlarmViewController.swift */; };
 		56CDBDF121620801001E5C7B /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56CDBDF021620801001E5C7B /* UITableView.swift */; };
@@ -57,6 +58,7 @@
 		567EBA4C215DED350096174B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		567EBA4E215DED350096174B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		567EBA54215DFF550096174B /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		56ACEE71217D73260073B272 /* first.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = first.mp3; sourceTree = "<group>"; };
 		56CDBDEB2161FD86001E5C7B /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		56CDBDED216205D9001E5C7B /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
 		56CDBDF021620801001E5C7B /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 		567EBA41215DED340096174B /* MotivationApp */ = {
 			isa = PBXGroup;
 			children = (
+				56ACEE70217D731B0073B272 /* Sounds */,
 				567EBA42215DED340096174B /* AppDelegate.swift */,
 				56CDBDEA2161FD59001E5C7B /* Model */,
 				56CDBDE82161FD48001E5C7B /* View */,
@@ -130,6 +133,14 @@
 				567EBA4E215DED350096174B /* Info.plist */,
 			);
 			path = MotivationApp;
+			sourceTree = "<group>";
+		};
+		56ACEE70217D731B0073B272 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				56ACEE71217D73260073B272 /* first.mp3 */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		56CDBDE82161FD48001E5C7B /* View */ = {
@@ -222,6 +233,11 @@
 				TargetAttributes = {
 					567EBA3E215DED340096174B = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -249,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				567EBA4D215DED350096174B /* LaunchScreen.storyboard in Resources */,
+				56ACEE72217D73260073B272 /* first.mp3 in Resources */,
 				567EBA4A215DED350096174B /* Assets.xcassets in Resources */,
 				567EBA48215DED340096174B /* Main.storyboard in Resources */,
 			);

@@ -10,7 +10,10 @@ import Foundation
 import UIKit
 import SnapKit
 
+
 class SettingSoundView : UIView {
+    
+    
     
     let soundLabel : UILabel = {
         
@@ -41,16 +44,6 @@ class SettingSoundView : UIView {
         
     }()
     
-    
-    let soundButton : UIButton = {
-        
-        let b = UIButton()
-        b.backgroundColor = .white
-        
-        
-        return b
-        
-    }()
     
     let vibrationButton : UIButton = {
         
@@ -86,7 +79,6 @@ extension SettingSoundView {
             soundLabel,
             soundImageView,
             soundSlider,
-            soundButton,
             vibrationButton
             
         ].forEach({addSubview($0)})
@@ -110,42 +102,21 @@ extension SettingSoundView {
         soundSlider.snp.makeConstraints{
             
             $0.centerY.equalTo(soundImageView.snp.centerY)
-            $0.leading.equalTo(soundImageView.snp.trailing).offset(8)
+            $0.leading.equalTo(soundImageView.snp.trailing).offset(24)
             $0.width.equalTo(140)
             
         }
-        
-        soundButton.snp.makeConstraints{
-            
-            $0.centerY.equalTo(soundImageView.snp.centerY)
-            $0.leading.equalTo(soundSlider.snp.trailing).offset(32)
-            $0.size.equalTo(40)
-            
-        }
+
         
         vibrationButton.snp.makeConstraints{
             
             $0.centerY.equalTo(soundImageView.snp.centerY)
-            $0.leading.equalTo(soundButton.snp.trailing).offset(16)
+            $0.leading.equalTo(soundSlider.snp.trailing).offset(24)
             $0.size.equalTo(40)
             
         }
-        
-        
-        
-        
-        
-        
+   
     }
     
 }
-
-extension SettingSoundView {
-    
-}
-
-extension SettingSoundView {
-    
-}
-
 

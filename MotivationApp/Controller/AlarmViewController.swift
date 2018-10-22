@@ -9,9 +9,16 @@
 import Foundation
 import UIKit
 import SnapKit
+import UserNotifications
+import AVFoundation
+
 
 class AlarmViewController : UIViewController {
-            
+    
+    var audioSession : AVAudioSession?
+    var audioRecorder : AVAudioRecorder?
+    var audioPlayer : AVAudioPlayer?
+    
     let backgroundImageView : UIImageView = {
         
         let iv = UIImageView()
@@ -63,11 +70,37 @@ extension AlarmViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        let app = UIApplication.shared
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert], completionHandler: { (didAllow, error) in
+            
+        })
+        
+        UNUserNotificationCenter.current().delegate = self
+    
+        let content = UNMutableNotificationContent()
+        content.title = "Noti Title"
+        content.body = "Noti Body"
+        
+        let calendar = Calendar.current
+        var dateComponents = DateComponents()
+        dateComponents.year = 2018
+        dateComponents.month = 10
+        dateComponents.day = 22
+        dateComponents.hour = 15
+        dateComponents.minute = 45
         
         
         
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        let request = UNNotificationRequest(identifier:"timerdone", content: content, trigger: trigger)
+        let center = UNUserNotificationCenter.current()
         
-        
+        center.add(request) { (error) in
+            print(error?.localizedDescription ?? "")
+        }
+
         setupViews()
         
 
@@ -78,6 +111,8 @@ extension AlarmViewController {
 
 //MARK:- SetupViews
 extension AlarmViewController {
+    
+
     
     fileprivate func setupViews() {
         
@@ -183,3 +218,108 @@ extension AlarmViewController {
     }
     
 }
+
+extension AlarmViewController : UNUserNotificationCenterDelegate {
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .sound, .badge])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, openSettingsFor notification: UNNotification?) {
+//        let settingsViewController = UIViewController()
+//        settingsViewController.view.backgroundColor = .gray
+//        self.present(settingsViewController, animated: true, completion: nil)
+        
+    }
+    
+    func scheduleNotification(date:String , time: String , subject:String) {
+        
+        var dateString = date+" "+time
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
+        
+        let convertedDate = dateFormatter.date(from: dateString)!
+        
+        let subtractTime = Calendar.current.date(byAdding: .minute, value: -10, to: convertedDate)
+        
+        dateString = dateFormatter.string(from: subtractTime!)
+        
+        var localTimeZoneName: String { return TimeZone.current.identifier }
+        var secondsFromGMT: Int { return TimeZone.current.secondsFromGMT() }
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: secondsFromGMT)
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
+        
+        let dateObj:Date = dateFormatter.date(from: dateString)!
+        
+        print("alaram time  : \(dateObj)")
+        
+        let triggerDaily = Calendar.current.dateComponents([.day,.month,.year,.hour,.minute,], from: dateObj)
+        
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDaily, repeats: true)
+        
+        let alarmId = UUID().uuidString
+        
+        let content = UNMutableNotificationContent()
+        content.title = "your title"
+        content.body = subject
+        content.sound = UNNotificationSound.init(named: UNNotificationSoundName(rawValue: "first.mp3"))
+        content.categoryIdentifier = alarmId
+        
+        let request = UNNotificationRequest(identifier: alarmId, content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().add(request) {(error) in
+            
+            if let error = error {
+                print("Uh oh! i had an error: \(error)")
+            }
+        }
+    }
+    
+    
+
+    
+    
+}
+
+extension AlarmViewController : AVAudioPlayerDelegate {
+    
+    func playSound(_ soundName: String) {
+        
+        //vibrate phone first
+        AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+        //set vibrate callback
+        AudioServicesAddSystemSoundCompletion(SystemSoundID(kSystemSoundID_Vibrate),nil,
+                                              nil,
+                                              { (_:SystemSoundID, _:UnsafeMutableRawPointer?) -> Void in
+                                                print("callback", terminator: "") //todo
+        },
+                                              nil)
+        let url = URL(
+            fileURLWithPath: Bundle.main.path(forResource: soundName, ofType: "mp3")!)
+        
+        var error: NSError?
+        
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+        } catch let error1 as NSError {
+            error = error1
+            audioPlayer = nil
+        }
+        
+        if let err = error {
+            print("audioPlayer error \(err.localizedDescription)")
+        } else {
+            audioPlayer!.delegate = self
+            audioPlayer!.prepareToPlay()
+        }
+        //negative number means loop infinity
+        audioPlayer!.numberOfLoops = -1
+        audioPlayer!.play()
+    }
+    
+}
+
+
+

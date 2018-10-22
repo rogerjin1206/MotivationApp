@@ -20,7 +20,6 @@ class SettingAlarmViewController : UIViewController {
     let settingMemoView = SettingMemoView()
     
     
-    
     let cancelButton : UIButton = {
         
         let b = UIButton()
@@ -66,8 +65,8 @@ extension SettingAlarmViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIWindow.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIWindow.keyboardWillHideNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIWindow.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIWindow.keyboardWillHideNotification, object: nil)
         
     }
     
@@ -149,7 +148,7 @@ extension SettingAlarmViewController {
         cancelButton.snp.makeConstraints{
             
             $0.leading.equalToSuperview()
-            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide)
             $0.width.equalTo(view.frame.width/2)
             $0.height.equalTo(56)
             
@@ -158,7 +157,7 @@ extension SettingAlarmViewController {
         saveButton.snp.makeConstraints{
             
             $0.trailing.equalToSuperview()
-            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide)
             $0.width.equalTo(view.frame.width/2)
             $0.height.equalTo(56)
             
